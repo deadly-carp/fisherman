@@ -1,0 +1,241 @@
+[gd_scene load_steps=21 format=3 uid="uid://7tr4bod7ulhe"]
+
+[ext_resource type="Script" uid="uid://dhdqfkutusiaw" path="res://player.gd" id="1_51s1s"]
+[ext_resource type="PackedScene" uid="uid://bti0ad6ijl58j" path="res://katana.glb" id="2_36tuc"]
+[ext_resource type="Shader" uid="uid://c7yo2hnp7bnj" path="res://psx_camera/psx_camera_shader.gdshader" id="2_gk1rr"]
+[ext_resource type="AudioStream" uid="uid://buqru67ru11h" path="res://random.wav" id="2_qqpso"]
+[ext_resource type="PackedScene" uid="uid://bl0e7j884qofd" path="res://frying_pan.glb" id="4_ffi5c"]
+[ext_resource type="FontFile" uid="uid://b6ucicl6gc3s8" path="res://vhs-gothic.ttf" id="5_nikcm"]
+[ext_resource type="AudioStream" uid="uid://cul6wa6acasal" path="res://The Dark Bean - imboredbutidontreallywanttodoanything (breakcore).mp3" id="6_k00f2"]
+[ext_resource type="AudioStream" uid="uid://tr7bq0bgfcvm" path="res://explosion.wav" id="8_gbtpi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1wy3d"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_22k8x"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fyxex"]
+viewport_path = NodePath("cameracontroller/Camera3D/SubViewportContainer/SubViewport/Sprite3D/SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rui5p"]
+bg_color = Color(0.539508, 0.0928586, 0.093425, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2b0po"]
+bg_color = Color(0.92, 0.1196, 0.1196, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84830"]
+size = Vector3(0.8, 2.135, 1.195)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rap5"]
+render_priority = 0
+shader = ExtResource("2_gk1rr")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(1, 0.346979, 0.438346, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 256
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_2nuba"]
+material = SubResource("ShaderMaterial_2rap5")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_ddtuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cameracontroller/Camera3D/melee:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cameracontroller/Camera3D/melee:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.71, -0.05, -0.831)]
+}
+
+[sub_resource type="Animation" id="Animation_kieko"]
+resource_name = "attack_katana"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cameracontroller/Camera3D/melee:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.741765, 0, 0.23911)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cameracontroller/Camera3D/melee:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.71, -0.05, -0.831), Vector3(0.06, -0.05, -0.991)]
+}
+
+[sub_resource type="Animation" id="Animation_kplbu"]
+resource_name = "return_katana"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cameracontroller/Camera3D/melee:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.741765, 0, 0.23911), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("cameracontroller/Camera3D/melee:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.06, -0.05, -0.991), Vector3(0.615, -0.05, -0.831)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sa7ly"]
+_data = {
+&"RESET": SubResource("Animation_ddtuj"),
+&"attack_katana": SubResource("Animation_kieko"),
+&"return_katana": SubResource("Animation_kplbu")
+}
+
+[node name="CharacterBody3D" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA_CONTROLLER", "camera_katana") groups=["player"]]
+script = ExtResource("1_51s1s")
+CAMERA_CONTROLLER = NodePath("cameracontroller/Camera3D")
+camera_katana = NodePath("cameracontroller/Camera3D/SubViewportContainer/SubViewport/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["player"]]
+shape = SubResource("CapsuleShape3D_1wy3d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D" groups=["player"]]
+layers = 2
+mesh = SubResource("CapsuleMesh_22k8x")
+skeleton = NodePath("../..")
+
+[node name="cameracontroller" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="cameracontroller"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cull_mask = 1048573
+current = true
+fov = 80.0
+far = 10000.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="cameracontroller/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewport" type="SubViewport" parent="cameracontroller/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Sprite3D" type="Sprite3D" parent="cameracontroller/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -1.4915, -2)
+transparent = false
+double_sided = false
+texture_filter = 0
+texture = SubResource("ViewportTexture_fyxex")
+
+[node name="health_bar" type="ProgressBar" parent="cameracontroller/Camera3D/SubViewportContainer/SubViewport/Sprite3D"]
+layout_direction = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_right = 29.0
+offset_bottom = 27.0
+grow_horizontal = 2
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_nikcm")
+theme_override_styles/background = SubResource("StyleBoxFlat_rui5p")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2b0po")
+step = 1.0
+
+[node name="Camera3D" type="Camera3D" parent="cameracontroller/Camera3D/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.53484, 0)
+cull_mask = 2
+current = true
+fov = 80.0
+
+[node name="hitbox" type="Area3D" parent="cameracontroller/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cameracontroller/Camera3D/hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0781109, 0.15607, -0.988072)
+shape = SubResource("BoxShape3D_84830")
+
+[node name="melee" type="Node3D" parent="cameracontroller/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.71, -0.05, -0.831)
+
+[node name="katana2" parent="cameracontroller/Camera3D/melee" instance=ExtResource("2_36tuc")]
+transform = Transform3D(0.0841796, -0.724804, 0.683793, 0.993349, 0.00693501, -0.114937, 0.0785648, 0.68892, 0.720567, -0.861, -0.677, -0.582)
+
+[node name="frying_pan2" parent="cameracontroller/Camera3D/melee" instance=ExtResource("4_ffi5c")]
+transform = Transform3D(0.00545662, 0.405861, 1.20867, 1.26509, 0.148614, -0.0556147, -0.158585, 1.19951, -0.402069, -0.24, -0.545, 0.255)
+visible = false
+
+[node name="PSXMesh" type="MeshInstance3D" parent="cameracontroller/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0763102, -0.618334, -0.55748)
+mesh = SubResource("QuadMesh_2nuba")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_sa7ly")
+}
+
+[node name="music" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.103961, 0)
+stream = ExtResource("6_k00f2")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_qqpso")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("8_gbtpi")

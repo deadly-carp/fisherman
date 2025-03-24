@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://355yq3v2h4d4"]
+
+[ext_resource type="Script" uid="uid://bsgkg0er6wsrk" path="res://win.gd" id="1_38cjt"]
+[ext_resource type="Texture2D" uid="uid://bht4bh875k1q4" path="res:// help.png" id="2_7gtbc"]
+[ext_resource type="FontFile" uid="uid://b6ucicl6gc3s8" path="res://vhs-gothic.ttf" id="3_5fgga"]
+
+[node name="win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_38cjt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_7gtbc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5fgga")
+theme_override_font_sizes/font_size = 150
+text = "You won !"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_5fgga")
+theme_override_font_sizes/font_size = 20
+text = "not bad kiddo"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="beta" type="Button" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_5fgga")
+text = "Play the other modes"
+
+[node name="quit" type="Button" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_5fgga")
+text = "quit"
+
+[connection signal="pressed" from="VBoxContainer2/beta" to="." method="_on_beta_pressed"]
+[connection signal="pressed" from="VBoxContainer2/quit" to="." method="_on_quit_pressed"]

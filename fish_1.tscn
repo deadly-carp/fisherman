@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1lx18xijg3o5"]
+
+[ext_resource type="PackedScene" uid="uid://b4nj3b2pbhwxl" path="res://models/fish_1.glb" id="1_u38jo"]
+[ext_resource type="Script" uid="uid://dfyl3o86ia3ip" path="res://fish_1.gd" id="1_ux6s7"]
+[ext_resource type="AudioStream" uid="uid://tr7bq0bgfcvm" path="res://explosion.wav" id="3_krnah"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jmpqx"]
+radius = 0.6
+height = 2.3
+
+[node name="fish_1" type="CharacterBody3D" groups=["Enemy"]]
+script = ExtResource("1_ux6s7")
+
+[node name="fish_1" parent="." groups=["Enemy"] instance=ExtResource("1_u38jo")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.78055, 0.149626)
+shape = SubResource("CapsuleShape3D_jmpqx")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.78055, 0.149626)
+shape = SubResource("CapsuleShape3D_jmpqx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68859, 0)
+stream = ExtResource("3_krnah")
+
+[connection signal="body_shape_entered" from="Area3D" to="." method="_on_area_3d_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
