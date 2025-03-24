@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://wrmndsebbwf3"]
+
+[ext_resource type="PackedScene" uid="uid://o6yhf34vublm" path="res://3d_tilemap/better_gridmap_special_blocs.glb" id="1_o1kch"]
+
+[node name="better_gridmap_special_blocs" instance=ExtResource("1_o1kch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
+
+[node name="Plane" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
+
+[node name="Plane_001" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="Plane_002" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+
+[node name="Plane_003" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+
+[node name="Plane_004" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0)

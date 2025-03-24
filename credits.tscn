@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2wbxymd24cmy"]
+
+[ext_resource type="Script" uid="uid://bj7wwvhbv6p5j" path="res://credits.gd" id="1_fwhxt"]
+[ext_resource type="Texture2D" uid="uid://bht4bh875k1q4" path="res:// help.png" id="1_p88rn"]
+[ext_resource type="FontFile" uid="uid://b6ucicl6gc3s8" path="res://vhs-gothic.ttf" id="2_64y17"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fwhxt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p88rn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_64y17")
+theme_override_font_sizes/font_size = 150
+text = "Credits
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_64y17")
+theme_override_font_sizes/font_size = 50
+text = "Coding, Playtesting, Modeling : Deadly_Carp
+
+Small scatered assets : Quaternius on poly.pizza
+
+Music : TheDarkBean on Freemusicarchive.com
+
+SFX : the sfxr.me website
+
+
+Special thanks to the godot discord and those who
+participated in the carp jam #1"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.63
+anchor_bottom = 0.63
+offset_left = 2.0
+offset_top = 233.6
+offset_right = 118.0
+offset_bottom = 289.6
+grow_vertical = 2
+scale = Vector2(3, 3)
+alignment = 1
+
+[node name="back" type="Button" parent="VBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_64y17")
+text = "Back"
+
+[connection signal="pressed" from="VBoxContainer2/back" to="." method="_on_back_pressed"]
